@@ -1,7 +1,2 @@
-development:
-  adapter: 'sqlite3'
-  database: 'db/development.db'
-
-test:
-  adapter: 'sqlite3'
-  database: 'db/test.db'
+adapter: 'sqlite3'
+database: 'db/ar.db'

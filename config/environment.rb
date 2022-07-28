@@ -1,8 +1,10 @@
 require "bundler/setup"
+
 require "sinatra/activerecord"
+
 Bundler.require
-require_all 'app/models'
 
-ENV['SINATRA_ENV'] ||= 'development'
+Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
 
-ActiveRecord::Base.establish_connection(ENV['SINATRA_ENV'].to_sym)
+connection_details = YAML::load(File.open('config/database.yml'))
+ActiveRecord::Base.establish_connection(connection_details)
